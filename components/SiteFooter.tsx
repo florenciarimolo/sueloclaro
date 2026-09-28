@@ -13,8 +13,9 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm text-stone-600">
         <p>SueloClaro: fichas de robots aspiradores de gama media.</p>
         <p>
-          Los enlaces a Amazon podrán ser de afiliado. Eso no cambia lo que
-          pagas al comprar. Detalle en{" "}
+          SueloClaro participa en el programa de afiliados de Amazon. Los
+          enlaces a Amazon son de afiliado. Eso no cambia lo que pagas al
+          comprar. Detalle en{" "}
           <Link href="/afiliacion" className="hover:text-teal-800">
             Afiliación
           </Link>

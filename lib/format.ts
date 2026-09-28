@@ -69,7 +69,7 @@ export const GUIDE_META: Record<
     title: "Robot aspirador para piso pequeño",
     description:
       "Qué mirar en un robot aspirador de gama media si el piso es pequeño o mediano.",
-    listingHref: "/robots",
+    listingHref: "/robots?piso=1",
   },
 };
 

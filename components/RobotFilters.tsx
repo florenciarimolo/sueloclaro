@@ -8,6 +8,7 @@ type Props = {
     mascotas?: string;
     alfombras?: string;
     base?: string;
+    piso?: string;
   };
 };
 
@@ -17,6 +18,7 @@ function buildHref(current: Props["current"], patch: Record<string, string | und
   if (next.marca) params.set("marca", next.marca);
   if (next.mascotas === "1") params.set("mascotas", "1");
   if (next.alfombras === "1") params.set("alfombras", "1");
+  if (next.piso === "1") params.set("piso", "1");
   if (next.base) params.set("base", next.base);
   const query = params.toString();
   return query ? `/robots?${query}` : "/robots";
@@ -25,7 +27,6 @@ function buildHref(current: Props["current"], patch: Record<string, string | und
 const dockOptions: { value: DockKind | ""; label: string }[] = [
   { value: "", label: "Cualquier base" },
   { value: "wash_dry", label: "Vacía, lava y seca" },
-  { value: "empty", label: "Autovaciado" },
   { value: "none", label: "Solo carga" },
 ];
 
@@ -81,6 +82,16 @@ export function RobotFilters({ brands, current }: Props) {
             className="size-4 rounded border-stone-300"
           />
           Apto para alfombras
+        </label>
+        <label className="flex items-center gap-2 text-sm text-stone-700">
+          <input
+            type="checkbox"
+            name="piso"
+            value="1"
+            defaultChecked={current.piso === "1"}
+            className="size-4 rounded border-stone-300"
+          />
+          Piso pequeño
         </label>
       </div>
       <div className="mt-4 flex flex-wrap gap-3">

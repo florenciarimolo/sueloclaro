@@ -19,6 +19,7 @@ type SearchParams = Promise<{
   marca?: string;
   mascotas?: string;
   alfombras?: string;
+  piso?: string;
   base?: string;
 }>;
 
@@ -42,6 +43,7 @@ export default async function RobotsPage({
     brand: marca,
     pet_hair: params.mascotas === "1" ? true : undefined,
     carpets: params.alfombras === "1" ? true : undefined,
+    small_flat: params.piso === "1" ? true : undefined,
     dock,
   });
   const origin = getSiteUrl();
@@ -62,7 +64,8 @@ export default async function RobotsPage({
       </h1>
       <p className="mt-3 text-stone-700">
         Modelos publicados de Roborock, Dreame y Xiaomi. Filtra por marca,
-        mascotas, alfombras o tipo de base.
+        mascotas, alfombras, piso pequeño o tipo de base. En este catálogo no
+        hay un modelo que solo autovacíe.
       </p>
       <div className="mt-6">
         <RobotFilters
@@ -71,6 +74,7 @@ export default async function RobotsPage({
             marca,
             mascotas: params.mascotas === "1" ? "1" : undefined,
             alfombras: params.alfombras === "1" ? "1" : undefined,
+            piso: params.piso === "1" ? "1" : undefined,
             base: dock,
           }}
         />

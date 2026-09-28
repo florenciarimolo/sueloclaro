@@ -17,6 +17,7 @@ import {
 } from "@/components/icons";
 import { RobotSchematic } from "@/components/RobotSchematic";
 import { amazonProductUrl } from "@/lib/amazon";
+import { alternativeFor } from "@/lib/decision";
 import {
   formatDock,
   formatHeight,
@@ -25,7 +26,7 @@ import {
   relatedGuideForProduct,
 } from "@/lib/format";
 import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
-import { getProductBySlug, getProductSlugs } from "@/lib/queries";
+import { getProductBySlug, getProductSlugs, getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
 type Props = PageProps<"/robots/[slug]">;
@@ -73,8 +74,9 @@ function yesOrNot(value: boolean) {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const [product, catalog] = await Promise.all([getProductBySlug(slug), getProducts()]);
   if (!product) notFound();
+  const alternative = alternativeFor(product, catalog);
 
   const origin = getSiteUrl();
   const guideSlug = relatedGuideForProduct(product);
@@ -188,6 +190,16 @@ export default async function ProductPage({ params }: Props) {
           <p className="mt-3 text-stone-700">{product.not_for_whom}</p>
         </section>
       </div>
+
+      {alternative ? (
+        <p className="mt-5 text-stone-700">
+          {alternative.reason}{" "}
+          <Link href={`/robots/${alternative.slug}`} className="font-medium text-teal-800 hover:underline">
+            {alternative.name}
+          </Link>
+          .
+        </p>
+      ) : null}
 
       <section className="mt-8 rounded-2xl border border-stone-200 bg-white p-6">
         <h2 className="text-lg font-semibold text-stone-900">Ficha técnica</h2>

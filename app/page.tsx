@@ -49,7 +49,7 @@ const needs: {
   {
     href: "/guias/robot-aspirador-piso-pequeno",
     title: "Vivo en un piso pequeño",
-    text: "Qué importa cuando hay poco espacio para la base.",
+    text: "Hay un modelo de solo carga. La guía dice qué medir si quieres una estación.",
     Icon: SmallFlatIcon,
   },
   {
@@ -68,7 +68,23 @@ const docks: { kind: DockKind; text: string }[] = [
 
 export default async function Home() {
   const [products, brands] = await Promise.all([getProducts(), getBrands()]);
-  const featured = products.slice(0, 6);
+  const preferred = [
+    "dreame-l10s-pro-gen-3",
+    "roborock-qrevo-edget",
+    "dreame-l10s-ultra-gen-2",
+    "roborock-qrevo-2-pro",
+    "xiaomi-robot-vacuum-x20-plus",
+    "roborock-qv-35a",
+  ];
+  const picked = preferred.flatMap((slug) => {
+    const product = products.find((item) => item.slug === slug);
+    return product ? [product] : [];
+  });
+  const featured = [
+    ...picked,
+    ...products.filter((product) => !picked.some((item) => item.slug === product.slug)),
+  ].slice(0, 6);
+  const publishedDocks = docks.filter((dock) => products.some((product) => product.dock === dock.kind));
   const origin = getSiteUrl();
 
   return (
@@ -142,14 +158,19 @@ export default async function Home() {
 
       <section className="mt-14">
         <h2 className="text-2xl font-semibold tracking-tight text-stone-900">
-          Tres tipos de base
+          La base que hay en el catálogo
         </h2>
         <p className="mt-2 max-w-2xl text-stone-600">
-          La base decide cuánto trabajo te queda a ti. Es lo primero que conviene
-          elegir.
+          Casi todos los modelos publicados vacían, lavan y secan la mopa. Hay
+          uno de solo carga. No hay ninguno que solo autovacíe: esa diferencia
+          se explica en{" "}
+          <Link href="/guias/como-elegir-robot-aspirador-gama-media" className="text-teal-800 hover:underline">
+            cómo elegir
+          </Link>
+          .
         </p>
-        <ul className="mt-5 grid gap-4 md:grid-cols-3">
-          {docks.map(({ kind, text }) => (
+        <ul className="mt-5 grid gap-4 md:grid-cols-2">
+          {publishedDocks.map(({ kind, text }) => (
             <li key={kind}>
               <Link
                 href={`/robots?base=${kind}`}

@@ -5,7 +5,7 @@ import { getSiteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Afiliación",
   description:
-    "Los enlaces de SueloClaro a Amazon podrán ser de afiliado. Eso no cambia el importe que pagas al comprar.",
+    "SueloClaro participa en el programa de afiliados de Amazon. Los enlaces a Amazon son de afiliado y eso no cambia el importe que pagas al comprar.",
   alternates: {
     canonical: "/afiliacion",
   },
@@ -29,14 +29,13 @@ export default function AfiliacionPage() {
       </h1>
       <div className="mt-4 space-y-4 text-stone-700">
         <p>
-          SueloClaro enlaza solo a fichas de producto en Amazon.es, con el
-          patrón https://www.amazon.es/dp/ y el ASIN del modelo. Hoy esos
-          enlaces no llevan etiqueta de afiliado.
+          SueloClaro participa en el programa de afiliados de Amazon.es. Los
+          enlaces de producto van a la ficha en https://www.amazon.es/dp/ más
+          el ASIN del modelo, e incluyen la etiqueta de afiliado.
         </p>
         <p>
-          Cuando el sitio forme parte del programa de afiliados de Amazon, los
-          enlaces a Amazon podrán ser de afiliado. Eso no cambia el precio para
-          quien compra.
+          Esos enlaces son de afiliado. Eso no cambia el precio para quien
+          compra.
         </p>
         <p>
           SueloClaro no muestra importes en la web mientras no haya datos de

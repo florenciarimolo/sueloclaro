@@ -10,6 +10,7 @@ import {
   type GuideSlug,
 } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
+import { publishedSpan } from "@/lib/decision";
 import { getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
@@ -43,6 +44,7 @@ export default async function GuidePage({ params }: Props) {
   const meta = GUIDE_META[slug];
   const origin = getSiteUrl();
   const related = await getProducts(GUIDE_FILTERS[slug]);
+  const span = publishedSpan(related);
 
   return (
     <main className="max-w-2xl">
@@ -92,6 +94,7 @@ export default async function GuidePage({ params }: Props) {
           Modelos publicados que encajan
         </h2>
         <p className="mt-2 text-sm text-stone-600">
+          {span ? `${span} ` : null}
           La lista sale de los robots publicados ahora mismo. Si un modelo
           pasa a borrador, deja de aparecer aquí.
         </p>
