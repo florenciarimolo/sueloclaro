@@ -1,0 +1,12 @@
+---
+description: Use only the SueloClaro Supabase project in this repo
+alwaysApply: true
+---
+
+# Supabase de este repositorio
+
+La base de este proyecto es `sueloclaro`, ref `rnlmxwyjnlfoofcuuxsy`, organización RimoByte, región `eu-west-1`.
+
+Usa solo el servidor MCP `sueloclaro` definido en `.cursor/mcp.json`. No uses el plugin `plugin-supabase-supabase`: esa sesión es la organización Maxchief (Client Portal, CRM, maxchief-p5). No crees proyectos, migraciones ni seeds ahí.
+
+Si `sueloclaro` no está autenticado, para y pide conectar ese servidor con la cuenta de RimoByte. No sustituyas esa conexión por una base local ni por Maxchief.
