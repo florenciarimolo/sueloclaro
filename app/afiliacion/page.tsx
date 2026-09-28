@@ -38,9 +38,7 @@ export default function AfiliacionPage() {
           compra.
         </p>
         <p>
-          SueloClaro no muestra importes en la web mientras no haya datos de
-          la API de Amazon autorizada. No usa otras redes de afiliación ni
-          enlaza a otras tiendas.
+          SueloClaro no usa otras redes de afiliación ni enlaza a otras tiendas.
         </p>
       </div>
     </main>

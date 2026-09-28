@@ -1,5 +1,4 @@
 import type { DockKind } from "@/lib/database.types";
-import { formatSuction } from "@/lib/format";
 
 type DecisionProduct = {
   slug: string;
@@ -35,7 +34,7 @@ export function alternativeFor(
       return {
         slug: pet.slug,
         name: pet.name,
-        reason: "Si hay pelo de mascota, esta ficha sí está marcada para eso.",
+        reason: "Si hay pelo de mascota, este modelo sí está pensado para eso.",
       };
     }
   }
@@ -47,7 +46,7 @@ export function alternativeFor(
         slug: compact.slug,
         name: compact.name,
         reason:
-          "Si la estación no cabe, este modelo solo vuelve a cargarse y está marcado para un piso pequeño.",
+          "Si la estación no cabe, este modelo solo vuelve a cargarse y cabe mejor en un piso pequeño.",
       };
     }
   }
@@ -61,30 +60,10 @@ export function alternativeFor(
         slug: station.slug,
         name: station.name,
         reason:
-          "Si quieres que la base vacíe, lave y seque la mopa, esta estación lo hace y está marcada para pelo.",
+          "Si quieres que la base vacíe, lave y seque la mopa, esta estación lo hace y vale si hay pelo.",
       };
     }
   }
 
   return null;
-}
-
-export function publishedSpan(products: DecisionProduct[]): string | null {
-  if (products.length === 0) return null;
-  const suctions = products.map((product) => product.pa_suction);
-  const min = Math.min(...suctions);
-  const max = Math.max(...suctions);
-  const withHeight = products.filter((product) => product.height_mm != null).length;
-  const suction =
-    min === max
-      ? `la succión publicada es ${formatSuction(min)}`
-      : `la succión va de ${formatSuction(min)} a ${formatSuction(max)}`;
-  const height =
-    withHeight === 0
-      ? "En ninguna consta la altura del cuerpo."
-      : withHeight === products.length
-        ? "En todas consta la altura del cuerpo."
-        : `La altura del cuerpo consta en ${withHeight} de ${products.length}.`;
-  const count = `${products.length} modelo${products.length === 1 ? "" : "s"} publicado${products.length === 1 ? "" : "s"}`;
-  return `${count}. ${suction.charAt(0).toUpperCase()}${suction.slice(1)}. ${height}`;
 }

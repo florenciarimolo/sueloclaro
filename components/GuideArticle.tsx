@@ -54,7 +54,7 @@ function HowToChoose() {
 
       <h2>Succión, navegación y mopa</h2>
       <p>
-        Los pascales de las fichas publicadas cubren un intervalo amplio: hay
+        Los pascales cubren un intervalo amplio: hay
         modelos de 6.000 Pa y otros de 25.000 Pa. Esa cifra sale de cada ficha,
         no de una prueba propia. Sirve para ordenar, no para garantizar un suelo
         concreto. En pelo largo y en alfombra densa suele importar más el
@@ -63,8 +63,7 @@ function HowToChoose() {
       <p>
         La navegación marca si el robot recorre en líneas o si se pierde entre
         sillas. En esta gama es habitual el mapa por láser o LiDAR, a veces con
-        luz estructurada o cámara para cables y zapatos. Si una ficha no nombra
-        el sistema, SueloClaro lo deja escrito así: no se inventa el nombre.
+        luz estructurada o cámara para cables y zapatos.
       </p>
       <p>
         El fregado suele ser con mopa giratoria. Lo que cambia es si llega al
@@ -95,19 +94,14 @@ function HowToChoose() {
         </li>
       </ul>
       <p>
-        Un mismo modelo puede encajar en más de una pregunta. Las etiquetas de
-        cada ficha (mascotas, alfombras, piso pequeño) no son un laboratorio:
-        resumen para quién se escribió esa ficha. Si un modelo pasa a borrador,
-        deja de aparecer en estas listas.
+        Un mismo modelo puede servir para más de una de estas casas.
       </p>
 
       <h2>Cómo usar las fichas</h2>
       <p>
-        Cada ficha tiene un para quién es y un para quién no. Léelos antes de la
-        tabla. La succión, la base y la altura (cuando consta) están ahí para
-        comparar datos, no para vender un “ganador”. Los colores son variantes
-        del mismo modelo: no tienen página propia. El botón a Amazon está al
-        final. Esta web no muestra un importe ni compara tiendas.
+        Cada ficha dice para quién es y para quién no. Léelos antes de la
+        tabla. La succión, la base y la altura sirven para comparar, no para
+        coronar un ganador.
       </p>
     </article>
   );
@@ -167,10 +161,8 @@ function Pets() {
 
       <h2>Qué no promete esta guía</h2>
       <p>
-        SueloClaro no ha medido cuántos gramos de pelo recoge cada modelo. Las
-        fichas de abajo son las publicadas con la etiqueta de mascotas. Si un
-        modelo deja de publicarse, desaparece de esta lista sin reescribir el
-        artículo. Para ver dos a dos succión, mopa y base, usa el{" "}
+        Las fichas de abajo son las que encajan si hay pelo. Para ver dos a dos
+        succión, mopa y base, usa el{" "}
         <Link href="/comparar">comparador</Link>.
       </p>
     </article>
@@ -191,13 +183,12 @@ function Carpets() {
       <p>
         Si friegas y aspiras en el mismo pase, la mopa húmeda sobre la
         alfombra deja una franja oscura y un olor a cerrado. Por eso las fichas
-        de esta guía destacan modelos que elevan la mopa: en el catálogo hay
-        elevaciones de 7 mm, 10 mm, 10,5 mm o 15 mm, según lo que conste en
-        cada ficha. No se rellenan milímetros que no estén escritos.
+        de esta guía destacan modelos que elevan la mopa: hay elevaciones de
+        7 mm, 10 mm, 10,5 mm o 15 mm.
       </p>
       <p>
-        La succión en alfombra pide más que en baldosa. Hay modelos publicados
-        de 6.000 Pa y otros de 25.000 Pa. El de menos pascales puede valer en
+        La succión en alfombra pide más que en baldosa. Hay modelos de 6.000 Pa
+        y otros de 25.000 Pa. El de menos pascales puede valer en
         una alfombra fina si la mopa se levanta; el de más pascales no arregla
         una mopa que arrastra.
       </p>
@@ -221,15 +212,14 @@ function Carpets() {
       <p>
         El felpudo de fibra larga y la moqueta de pared a pared no son el caso
         de esta guía. Ahí el robot o se queda o se come el fleco. Las fichas de
-        abajo hablan de alfombras domésticas de pelo bajo o medio, no de un
-        ensayo de laboratorio. Si el modelo permite “evitar alfombras”,
+        abajo hablan de alfombras domésticas de pelo bajo o medio. Si el modelo
+        permite “evitar alfombras”,
         úsalo en las que no quieras tratar.
       </p>
       <p>
         Para cruzar succión, elevación de mopa y tipo de base de dos fichas,
         el{" "}
-        <Link href="/comparar">comparador</Link> muestra esos campos. Esta
-        página no escribe un duelo entre dos nombres.
+        <Link href="/comparar">comparador</Link> muestra esos campos.
       </p>
     </article>
   );
@@ -262,8 +252,8 @@ function SmallFlat() {
       <p>
         En piso pequeño el polvo se esconde bajo los pocos muebles que hay. Si
         la ficha da altura del robot, compárala con el hueco real: un cuerpo de
-        unos 8 cm entra donde uno de 9,65 cm no. Cuando la ficha no da esa
-        cifra, SueloClaro escribe “No consta”. No se estima a ojo.
+        unos 8 cm entra donde uno de 9,65 cm no. Si la ficha no da la altura,
+        mídela en casa antes de comprar.
       </p>
       <p>
         Un mapa de varias plantas sirve menos si solo hay una. Sirve más que el
@@ -279,9 +269,8 @@ function SmallFlat() {
         enorme, siempre que aceptes vaciar el depósito.
       </p>
       <p>
-        Las fichas de abajo son las publicadas con la etiqueta de piso pequeño.
-        No es un ranking de tamaño: es el criterio de espacio de esta web. Si
-        el modelo deja de publicarse, sale de la lista. Para comparar
+        Las fichas de abajo son las que encajan cuando hay poco sitio para la
+        base. No es un ranking de tamaño. Para comparar
         altura y tipo de base de dos modelos, usa el{" "}
         <Link href="/comparar">comparador</Link>.
       </p>

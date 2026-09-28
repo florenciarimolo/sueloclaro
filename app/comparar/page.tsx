@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: "Comparar robots",
     description:
-      "Compara la ficha técnica de dos robots aspiradores publicados en SueloClaro.",
+      "Compara la ficha técnica de dos robots aspiradores de gama media en SueloClaro.",
     alternates: {
       canonical: "/comparar",
     },
@@ -104,7 +104,7 @@ export default async function ComparePage({
           webPageJsonLd({
             name: "Comparar robots | SueloClaro",
             description:
-              "Compara la ficha técnica de dos robots aspiradores publicados.",
+              "Compara la ficha técnica de dos robots aspiradores de gama media.",
             path: "/comparar",
             origin,
           }),
@@ -136,8 +136,7 @@ export default async function ComparePage({
         Comparar robots
       </h1>
       <p className="mt-3 text-stone-700">
-        Elige dos modelos publicados. La tabla sale de sus fichas técnicas. No
-        compara precios.
+        Elige dos modelos. La tabla muestra succión, base, mopa y altura.
       </p>
 
       <div className="mt-6">

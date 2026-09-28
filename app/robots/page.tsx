@@ -63,7 +63,7 @@ export default async function RobotsPage({
         Robots aspiradores
       </h1>
       <p className="mt-3 text-stone-700">
-        Modelos publicados de Roborock, Dreame y Xiaomi. Filtra por marca,
+        Robots aspiradores de Roborock, Dreame y Xiaomi. Filtra por marca,
         mascotas, alfombras, piso pequeño o tipo de base. En este catálogo no
         hay un modelo que solo autovacíe.
       </p>

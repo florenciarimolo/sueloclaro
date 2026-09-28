@@ -69,7 +69,7 @@ function SpecRow({ Icon, label, children }: { Icon: Icon; label: string; childre
 }
 
 function yesOrNot(value: boolean) {
-  return value ? "Sí" : "No destacado";
+  return value ? "Sí" : "No";
 }
 
 export default async function ProductPage({ params }: Props) {

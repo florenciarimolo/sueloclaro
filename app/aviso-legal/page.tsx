@@ -28,8 +28,8 @@ export default function AvisoLegalPage() {
       <div className="mt-4 space-y-4 text-stone-700">
         <p>
           SueloClaro es un catálogo informativo de robots aspiradores de gama
-          media. No es una tienda: no vende productos ni compara importes entre
-          comercios. Los únicos enlaces de compra apuntan a Amazon.es.
+          media. No es una tienda: no vende productos. Los únicos enlaces de
+          compra apuntan a Amazon.es.
         </p>
         <p>
           Titular: {SITE_OWNER.name}. NIF: {SITE_OWNER.nif}. Domicilio:{" "}
@@ -42,8 +42,7 @@ export default function AvisoLegalPage() {
         <p>
           Las fichas y las guías son texto propio de SueloClaro. Las
           especificaciones y la disponibilidad en Amazon.es pueden cambiar. Esta
-          web no hace seguimiento de importes ni envía avisos cuando un dato
-          cambia en Amazon.
+          web no envía avisos cuando un dato cambia en Amazon.
         </p>
       </div>
     </main>

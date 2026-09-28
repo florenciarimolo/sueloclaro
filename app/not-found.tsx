@@ -7,11 +7,11 @@ export default function NotFound() {
         Página no encontrada
       </h1>
       <p className="mt-3 text-stone-700">
-        Esa URL no existe o el modelo ya no está publicado.
+        Esa página no existe.
       </p>
       <p className="mt-6">
         <Link href="/robots" className="text-teal-800 hover:underline">
-          Ver robots publicados
+          Ver los robots
         </Link>
       </p>
     </main>

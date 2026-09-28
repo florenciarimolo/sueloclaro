@@ -8,7 +8,7 @@ const nav = [
   { href: "/robots", label: "Robots" },
   { href: "/comparar", label: "Comparar" },
   { href: "/guias/como-elegir-robot-aspirador-gama-media", label: "Guías" },
-  { href: "/marcas/roborock", label: "Marcas" },
+  { href: "/marcas", label: "Marcas" },
 ];
 
 function Logo() {

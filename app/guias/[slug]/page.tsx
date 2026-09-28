@@ -10,7 +10,6 @@ import {
   type GuideSlug,
 } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
-import { publishedSpan } from "@/lib/decision";
 import { getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
@@ -44,7 +43,6 @@ export default async function GuidePage({ params }: Props) {
   const meta = GUIDE_META[slug];
   const origin = getSiteUrl();
   const related = await getProducts(GUIDE_FILTERS[slug]);
-  const span = publishedSpan(related);
 
   return (
     <main className="max-w-2xl">
@@ -91,17 +89,10 @@ export default async function GuidePage({ params }: Props) {
 
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight text-stone-900">
-          Modelos publicados que encajan
+          Modelos que encajan
         </h2>
-        <p className="mt-2 text-sm text-stone-600">
-          {span ? `${span} ` : null}
-          La lista sale de los robots publicados ahora mismo. Si un modelo
-          pasa a borrador, deja de aparecer aquí.
-        </p>
         {related.length === 0 ? (
-          <p className="mt-4 text-stone-600">
-            No hay modelos publicados con este criterio.
-          </p>
+          <p className="mt-4 text-stone-600">No hay modelos con este criterio.</p>
         ) : (
           <div className="mt-5 grid gap-5 sm:grid-cols-2">
             {related.map((product) => (

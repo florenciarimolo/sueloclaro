@@ -110,8 +110,7 @@ export default async function Home() {
             </h1>
             <p className="mt-4 max-w-xl text-lg text-stone-600">
               Fichas propias que explican para quién sirve cada modelo y para
-              quién no, entre 250 y 600 euros. No comparamos tiendas ni
-              mostramos precios.
+              quién no, entre 250 y 600 euros.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -161,7 +160,7 @@ export default async function Home() {
           La base que hay en el catálogo
         </h2>
         <p className="mt-2 max-w-2xl text-stone-600">
-          Casi todos los modelos publicados vacían, lavan y secan la mopa. Hay
+          Casi todos los modelos de aquí vacían, lavan y secan la mopa. Hay
           uno de solo carga. No hay ninguno que solo autovacíe: esa diferencia
           se explica en{" "}
           <Link href="/guias/como-elegir-robot-aspirador-gama-media" className="text-teal-800 hover:underline">

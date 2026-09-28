@@ -51,6 +51,7 @@ export default async function BrandPage({ params }: Props) {
           breadcrumbJsonLd(
             [
               { name: "Inicio", path: "/" },
+              { name: "Marcas", path: "/marcas" },
               { name: brand.name, path: `/marcas/${brand.slug}` },
             ],
             origin,
@@ -66,6 +67,12 @@ export default async function BrandPage({ params }: Props) {
             </Link>
             <span aria-hidden="true"> / </span>
           </li>
+          <li>
+            <Link href="/marcas" className="hover:text-teal-800">
+              Marcas
+            </Link>
+            <span aria-hidden="true"> / </span>
+          </li>
           <li aria-current="page" className="text-stone-700">
             {brand.name}
           </li>
@@ -76,7 +83,7 @@ export default async function BrandPage({ params }: Props) {
         Robots {brand.name}
       </h1>
       <p className="mt-3 text-stone-700">
-        Modelos {brand.name} publicados en SueloClaro, dentro de la gama media.
+        Modelos {brand.name} de gama media.
       </p>
       <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
