@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ProductWithBrand } from "@/lib/database.types";
+import { amazonProductUrl } from "@/lib/amazon";
 import { formatDock, formatSuction } from "@/lib/format";
-import { DockIcon, SuctionIcon } from "./icons";
+import { ArrowRightIcon, DockIcon, SuctionIcon } from "./icons";
 import { FeatureBadges } from "./FeatureBadges";
 import { RobotSchematic } from "./RobotSchematic";
 
@@ -23,7 +24,7 @@ export function ProductCard({ product }: { product: ProductWithBrand }) {
             {product.name}
           </Link>
         </h2>
-        <p className="mt-2 line-clamp-3 text-sm text-stone-600">{product.summary}</p>
+        <p className="mt-2 line-clamp-3 min-h-[3.75rem] text-sm text-stone-600">{product.summary}</p>
         <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-stone-100 pt-4 text-sm">
           <div className="flex items-start gap-2">
             <SuctionIcon className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
@@ -36,11 +37,21 @@ export function ProductCard({ product }: { product: ProductWithBrand }) {
             <DockIcon className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
             <div>
               <dt className="text-xs text-stone-500">Base</dt>
-              <dd className="font-medium text-stone-800">{formatDock(product.dock)}</dd>
+              <dd className="min-h-10 font-medium text-stone-800">{formatDock(product.dock)}</dd>
             </div>
           </div>
         </dl>
-        <FeatureBadges product={product} className="mt-4" />
+        <div className="mb-5 mt-4 min-h-7">
+          <FeatureBadges product={product} />
+        </div>
+        <a
+          href={amazonProductUrl(product.asin)}
+          rel="noopener noreferrer"
+          className="relative z-10 mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-teal-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-teal-900"
+        >
+          Ver en Amazon
+          <ArrowRightIcon className="h-4 w-4" />
+        </a>
       </div>
     </article>
   );
