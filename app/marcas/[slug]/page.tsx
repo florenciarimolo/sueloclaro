@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
-import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { getBrandBySlug, getBrands, getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const brand = await getBrandBySlug(slug);
   if (!brand) return { title: "Marca no encontrada" };
   return {
-    title: `Robots ${brand.name}`,
-    description: `Fichas de robots aspiradores ${brand.name} de gama media en SueloClaro.`,
+    title: `Robots aspiradores ${brand.name}`,
+    description: `Fichas de robots aspiradores ${brand.name} de gama media, entre 250 y 600 euros: para quién encaja cada modelo.`,
     alternates: {
       canonical: `/marcas/${brand.slug}`,
     },
@@ -43,10 +43,19 @@ export default async function BrandPage({ params }: Props) {
       <JsonLd
         data={[
           webPageJsonLd({
-            name: `Robots ${brand.name} | SueloClaro`,
-            description: `Fichas de robots aspiradores ${brand.name} de gama media.`,
+            name: `Robots aspiradores ${brand.name} | SueloClaro`,
+            description: `Fichas de robots aspiradores ${brand.name} de gama media, entre 250 y 600 euros.`,
             path: `/marcas/${brand.slug}`,
             origin,
+          }),
+          itemListJsonLd({
+            name: `Robots aspiradores ${brand.name}`,
+            path: `/marcas/${brand.slug}`,
+            origin,
+            items: products.map((product) => ({
+              name: product.name,
+              path: `/robots/${product.slug}`,
+            })),
           }),
           breadcrumbJsonLd(
             [
@@ -80,10 +89,10 @@ export default async function BrandPage({ params }: Props) {
       </nav>
 
       <h1 className="text-3xl font-semibold tracking-tight text-stone-900">
-        Robots {brand.name}
+        Robots aspiradores {brand.name}
       </h1>
       <p className="mt-3 text-stone-700">
-        Modelos {brand.name} de gama media.
+        Modelos {brand.name} de gama media, entre 250 y 600 euros.
       </p>
       <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (

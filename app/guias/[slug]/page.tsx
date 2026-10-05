@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import { GuideArticle } from "@/components/GuideArticle";
 import { ProductCard } from "@/components/ProductCard";
 import {
+  GUIDE_FAQ,
   GUIDE_FILTERS,
   GUIDE_META,
   GUIDE_SLUGS,
   type GuideSlug,
 } from "@/lib/format";
-import { articleJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/json-ld";
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/json-ld";
 import { getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
@@ -41,6 +42,7 @@ export default async function GuidePage({ params }: Props) {
   if (!isGuideSlug(slug)) notFound();
 
   const meta = GUIDE_META[slug];
+  const faq = GUIDE_FAQ[slug];
   const origin = getSiteUrl();
   const related = await getProducts(GUIDE_FILTERS[slug]);
 
@@ -54,6 +56,7 @@ export default async function GuidePage({ params }: Props) {
             path: `/guias/${slug}`,
             origin,
           }),
+          faqJsonLd(faq),
           breadcrumbJsonLd(
             [
               { name: "Inicio", path: "/" },
@@ -86,6 +89,18 @@ export default async function GuidePage({ params }: Props) {
       <div className="mt-6">
         <GuideArticle slug={slug} />
       </div>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold tracking-tight text-stone-900">Preguntas frecuentes</h2>
+        <dl className="mt-4 grid gap-4">
+          {faq.map((item) => (
+            <div key={item.question}>
+              <dt className="font-medium text-stone-900">{item.question}</dt>
+              <dd className="mt-1 text-stone-700">{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight text-stone-900">

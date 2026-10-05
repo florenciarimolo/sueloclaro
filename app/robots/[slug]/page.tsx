@@ -23,6 +23,8 @@ import {
   formatHeight,
   formatSuction,
   GUIDE_META,
+  productMetaDescription,
+  productSearchTitle,
   relatedGuideForProduct,
 } from "@/lib/format";
 import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
@@ -46,8 +48,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await getProductBySlug(slug);
   if (!product) return { title: "Modelo no encontrado" };
   return {
-    title: product.name,
-    description: product.summary,
+    title: productSearchTitle(product.name),
+    description: productMetaDescription(product),
     alternates: {
       canonical: `/robots/${product.slug}`,
     },
@@ -97,8 +99,8 @@ export default async function ProductPage({ params }: Props) {
       <JsonLd
         data={[
           webPageJsonLd({
-            name: `${product.name} | SueloClaro`,
-            description: product.summary,
+            name: `${productSearchTitle(product.name)} | SueloClaro`,
+            description: productMetaDescription(product),
             path: `/robots/${product.slug}`,
             origin,
           }),

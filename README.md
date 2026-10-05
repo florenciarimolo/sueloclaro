@@ -15,7 +15,7 @@ Copia `.env.example` a `.env.local`.
 | `NEXT_PUBLIC_SUPABASE_URL` | URL del proyecto remoto |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Clave publicable. Nunca la service role |
 | `SUPABASE_SERVICE_ROLE_KEY` | Vacía en el cliente y en el despliegue público |
-| `NEXT_PUBLIC_SITE_URL` | Origen canónico, por defecto `https://sueloclaro.com` |
+| `NEXT_PUBLIC_SITE_URL` | Origen canónico `https://www.sueloclaro.com`. El apex redirige aquí |
 | `AFFILIATE_TAG` | `sueloclaro-21` |
 | `SHOW_PRICES` | `false` |
 
@@ -34,9 +34,9 @@ No se despliega desde este repositorio hasta tener dominio y cuenta de alojamien
 1. Comprueba en local `npm run build` y `npm run start`.
 2. Crea un proyecto Next.js en Vercel (u otro alojamiento Node) enlazado a este repositorio.
 3. Define las mismas variables que `.env.example`. `AFFILIATE_TAG=sueloclaro-21`. `SHOW_PRICES=false`. No subas `SUPABASE_SERVICE_ROLE_KEY`.
-4. Pon `NEXT_PUBLIC_SITE_URL` al dominio público final, sin barra al final (`https://sueloclaro.com`).
+4. Pon `NEXT_PUBLIC_SITE_URL` en `https://www.sueloclaro.com`, sin barra al final. El apex redirige a `www`; canónicas y sitemap tienen que usar el mismo host.
 5. Asigna el dominio y espera HTTPS.
-6. Abre `/sitemap.xml` y `https://sueloclaro.com/robots.txt` y comprueba que el origen coincide.
+6. Abre `https://www.sueloclaro.com/sitemap.xml` y `https://www.sueloclaro.com/robots.txt` y comprueba que el origen es `www`.
 7. Comprueba en `/aviso-legal` titular, NIF, domicilio y correo.
 8. La etiqueta de afiliado ya está en los enlaces. No actives `SHOW_PRICES` hasta tener la API (fase 7).
 

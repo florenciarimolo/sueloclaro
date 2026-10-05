@@ -5,9 +5,9 @@ import { getBrands, getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Marcas",
+  title: "Marcas de robots aspiradores",
   description:
-    "Robots aspiradores Roborock, Dreame y Xiaomi de gama media en SueloClaro.",
+    "Robots aspiradores Roborock, Dreame y Xiaomi de gama media, entre 250 y 600 euros.",
   alternates: {
     canonical: "/marcas",
   },
@@ -22,9 +22,9 @@ export default async function BrandsPage() {
       <JsonLd
         data={[
           webPageJsonLd({
-            name: "Marcas | SueloClaro",
+            name: "Marcas de robots aspiradores | SueloClaro",
             description:
-              "Robots aspiradores Roborock, Dreame y Xiaomi de gama media.",
+              "Robots aspiradores Roborock, Dreame y Xiaomi de gama media, entre 250 y 600 euros.",
             path: "/marcas",
             origin,
           }),
@@ -51,10 +51,10 @@ export default async function BrandsPage() {
         </ol>
       </nav>
       <h1 className="text-3xl font-semibold tracking-tight text-stone-900">
-        Marcas
+        Marcas de robots aspiradores
       </h1>
       <p className="mt-3 max-w-2xl text-stone-700">
-        Roborock, Dreame y Xiaomi. Cada marca abre sus modelos.
+        Roborock, Dreame y Xiaomi, entre 250 y 600 euros. Cada marca abre sus modelos.
       </p>
       <ul className="mt-8 grid gap-4 sm:grid-cols-3">
         {brands.map((brand) => {

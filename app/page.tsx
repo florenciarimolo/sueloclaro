@@ -13,16 +13,16 @@ import { ProductCard } from "@/components/ProductCard";
 import { HeroSchematic, RobotSchematic } from "@/components/RobotSchematic";
 import type { DockKind } from "@/lib/database.types";
 import { formatDock, GUIDE_META, GUIDE_SLUGS } from "@/lib/format";
-import { JsonLd, webPageJsonLd } from "@/lib/json-ld";
+import { JsonLd, webPageJsonLd, webSiteJsonLd } from "@/lib/json-ld";
 import { getBrands, getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "SueloClaro: robots aspiradores de gama media",
+    absolute: "Robots aspiradores de gama media | SueloClaro",
   },
   description:
-    "Fichas de robots aspiradores Roborock, Dreame y Xiaomi de gama media, y para quién encaja cada modelo.",
+    "Fichas de robots aspiradores Roborock, Dreame y Xiaomi entre 250 y 600 euros, y para quién encaja cada modelo.",
   alternates: {
     canonical: "/",
   },
@@ -35,13 +35,13 @@ const needs: {
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
 }[] = [
   {
-    href: "/robots?mascotas=1",
+    href: "/guias/robot-aspirador-con-mascotas",
     title: "Tengo mascotas",
     text: "Modelos que en su ficha constan como aptos para pelo.",
     Icon: PetIcon,
   },
   {
-    href: "/robots?alfombras=1",
+    href: "/guias/robot-aspirador-alfombras",
     title: "Tengo alfombras",
     text: "Modelos que en su ficha constan como aptos para alfombras.",
     Icon: CarpetIcon,
@@ -90,13 +90,20 @@ export default async function Home() {
   return (
     <main>
       <JsonLd
-        data={webPageJsonLd({
-          name: "SueloClaro: robots aspiradores de gama media",
-          description:
-            "Fichas de robots aspiradores Roborock, Dreame y Xiaomi de gama media, y para quién encaja cada modelo.",
-          path: "/",
-          origin,
-        })}
+        data={[
+          webSiteJsonLd({
+            description:
+              "Fichas de robots aspiradores Roborock, Dreame y Xiaomi entre 250 y 600 euros, y para quién encaja cada modelo.",
+            origin,
+          }),
+          webPageJsonLd({
+            name: "Robots aspiradores de gama media | SueloClaro",
+            description:
+              "Fichas de robots aspiradores Roborock, Dreame y Xiaomi entre 250 y 600 euros, y para quién encaja cada modelo.",
+            path: "/",
+            origin,
+          }),
+        ]}
       />
 
       <section className="relative overflow-hidden rounded-3xl border border-stone-200 bg-gradient-to-br from-white via-white to-teal-50 px-6 py-10 sm:px-10 sm:py-14">

@@ -7,11 +7,19 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "SueloClaro: robots aspiradores de gama media",
+    default: "Robots aspiradores de gama media | SueloClaro",
     template: "%s | SueloClaro",
   },
   description:
-    "Fichas de robots aspiradores Roborock, Dreame y Xiaomi de gama media, y para quién encaja cada modelo.",
+    "Fichas de robots aspiradores Roborock, Dreame y Xiaomi entre 250 y 600 euros, y para quién encaja cada modelo.",
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    siteName: "SueloClaro",
+  },
+  twitter: {
+    card: "summary",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },

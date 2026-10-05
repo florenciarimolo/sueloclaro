@@ -35,6 +35,58 @@ export function webPageJsonLd(input: {
   };
 }
 
+export function webSiteJsonLd(input: { description: string; origin: string }): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SueloClaro",
+    description: input.description,
+    url: input.origin,
+    inLanguage: "es-ES",
+    publisher: {
+      "@type": "Organization",
+      name: "SueloClaro",
+      url: input.origin,
+    },
+  };
+}
+
+export function itemListJsonLd(input: {
+  name: string;
+  path: string;
+  origin: string;
+  items: { name: string; path: string }[];
+}): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: input.name,
+    url: `${input.origin}${input.path}`,
+    numberOfItems: input.items.length,
+    itemListElement: input.items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${input.origin}${item.path}`,
+    })),
+  };
+}
+
+export function faqJsonLd(items: { question: string; answer: string }[]): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export function articleJsonLd(input: {
   name: string;
   description: string;
@@ -48,6 +100,11 @@ export function articleJsonLd(input: {
     description: input.description,
     url: `${input.origin}${input.path === "/" ? "" : input.path}`,
     inLanguage: "es-ES",
+    publisher: {
+      "@type": "Organization",
+      name: "SueloClaro",
+      url: input.origin,
+    },
   };
 }
 

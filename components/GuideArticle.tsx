@@ -49,7 +49,10 @@ function HowToChoose() {
         Si lo que te pesa es fregar a mano, una estación que lava y seca ahorra
         más trabajo que un número más alto de succión. Si vives en un piso
         estrecho, esa misma estación puede no caber. Entonces un modelo de solo
-        carga sigue teniendo sentido.
+        carga sigue teniendo sentido. En este catálogo el único es el{" "}
+        <Link href="/robots/dreame-l10s-pro-gen-3">Dreame L10s Pro Gen 3</Link>.
+        Una estación que vacía, lava y seca es, por ejemplo, el{" "}
+        <Link href="/robots/roborock-qrevo-s5v">Roborock Qrevo S5V</Link>.
       </p>
 
       <h2>Succión, navegación y mopa</h2>
@@ -141,8 +144,12 @@ function Pets() {
       <p>
         La succión cuenta, sobre todo en alfombra, pero un salto de unos miles
         de pascales no compensa un cepillo que se empasta. En el catálogo hay
-        modelos de pelo con 10.000 Pa y otros con 19.000 Pa o más; la ficha
-        concreta da la cifra.
+        modelos de pelo con 10.000 Pa, como el{" "}
+        <Link href="/robots/dreame-l10s-ultra-gen-2">Dreame L10s Ultra Gen 2</Link>, y
+        otros con 19.000 Pa o más. El{" "}
+        <Link href="/robots/roborock-qrevo-s5v">Roborock Qrevo S5V</Link> está
+        en 12.000 Pa y también consta como apto para pelo. La ficha concreta da
+        la cifra.
       </p>
 
       <h2>Pelo largo, pelo corto y varios animales</h2>
@@ -188,9 +195,13 @@ function Carpets() {
       </p>
       <p>
         La succión en alfombra pide más que en baldosa. Hay modelos de 6.000 Pa
-        y otros de 25.000 Pa. El de menos pascales puede valer en
-        una alfombra fina si la mopa se levanta; el de más pascales no arregla
-        una mopa que arrastra.
+        y otros de 25.000 Pa. El{" "}
+        <Link href="/robots/xiaomi-robot-vacuum-x20-plus">Xiaomi X20+</Link> es
+        de los de menos succión y consta como apto para alfombra. El{" "}
+        <Link href="/robots/roborock-qrevo-2-pro">Roborock Qrevo 2 Pro</Link> sube
+        la potencia en la alfombra y está en 25.000 Pa. El de menos
+        pascales puede valer en una alfombra fina si la mopa se levanta; el de
+        más pascales no arregla una mopa que arrastra.
       </p>
 
       <h2>Detección y mapas</h2>
@@ -239,8 +250,14 @@ function SmallFlat() {
         Una estación que vacía, lava y seca es ancha y alta. Necesita aire
         alrededor, un enchufe y un suelo nivelado. En un recibidor estrecho
         suele ganar un robot que solo vuelve a cargarse: la base es una rampa
-        baja. El fregado sigue existiendo; el depósito de agua y la mopa los
-        atiendes tú, a cambio de no ceder medio metro de pasillo.
+        baja. En este catálogo ese modelo es el{" "}
+        <Link href="/robots/dreame-l10s-pro-gen-3">Dreame L10s Pro Gen 3</Link>,
+        marcado para piso pequeño, con 97 mm de alto. El cuerpo más bajo es el{" "}
+        <Link href="/robots/roborock-qrevo-edget">Roborock Qrevo EdgeT</Link>,
+        80 mm, pero su estación vacía, lava y seca: el hueco que hay que medir
+        es el de la torre, no el del robot. El fregado sigue existiendo en el
+        de solo carga; el depósito de agua y la mopa los atiendes tú, a cambio
+        de no ceder medio metro de pasillo.
       </p>
       <p>
         Si aun así quieres autovaciado, coloca la estación donde ya dejas el

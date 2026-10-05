@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://sueloclaro.com/sitemap.xml
+Sitemap: https://www.sueloclaro.com/sitemap.xml

@@ -2,18 +2,39 @@ import type { Metadata } from "next";
 import { ProductCard } from "@/components/ProductCard";
 import { RobotFilters } from "@/components/RobotFilters";
 import type { DockKind } from "@/lib/database.types";
-import { JsonLd, webPageJsonLd } from "@/lib/json-ld";
+import { itemListJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { getBrands, getProducts } from "@/lib/queries";
 import { getSiteUrl } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Robots aspiradores",
-  description:
-    "Listado de robots aspiradores Roborock, Dreame y Xiaomi de gama media, filtrable por marca, mascotas, alfombras y tipo de base.",
-  alternates: {
-    canonical: "/robots",
-  },
-};
+const LISTING_TITLE = "Robots aspiradores Roborock, Dreame y Xiaomi";
+const LISTING_DESCRIPTION =
+  "Listado de robots aspiradores Roborock, Dreame y Xiaomi de gama media, entre 250 y 600 euros. Filtra por mascotas, alfombras y tipo de base.";
+
+function hasFilters(params: {
+  marca?: string;
+  mascotas?: string;
+  alfombras?: string;
+  piso?: string;
+  base?: string;
+}) {
+  return Boolean(params.marca || params.mascotas || params.alfombras || params.piso || params.base);
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  return {
+    title: LISTING_TITLE,
+    description: LISTING_DESCRIPTION,
+    alternates: {
+      canonical: "/robots",
+    },
+    robots: hasFilters(params) ? { index: false, follow: true } : undefined,
+  };
+}
 
 type SearchParams = Promise<{
   marca?: string;
@@ -51,13 +72,27 @@ export default async function RobotsPage({
   return (
     <main>
       <JsonLd
-        data={webPageJsonLd({
-          name: "Robots aspiradores | SueloClaro",
-          description:
-            "Listado de robots aspiradores Roborock, Dreame y Xiaomi de gama media.",
-          path: "/robots",
-          origin,
-        })}
+        data={[
+          webPageJsonLd({
+            name: `${LISTING_TITLE} | SueloClaro`,
+            description: LISTING_DESCRIPTION,
+            path: "/robots",
+            origin,
+          }),
+          ...(hasFilters(params)
+            ? []
+            : [
+                itemListJsonLd({
+                  name: LISTING_TITLE,
+                  path: "/robots",
+                  origin,
+                  items: products.map((product) => ({
+                    name: product.name,
+                    path: `/robots/${product.slug}`,
+                  })),
+                }),
+              ]),
+        ]}
       />
       <h1 className="text-3xl font-semibold tracking-tight text-stone-900">
         Robots aspiradores

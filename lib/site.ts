@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://sueloclaro.com";
+const CANONICAL_ORIGIN = "https://www.sueloclaro.com";
 
 export const SITE_OWNER = {
   name: "Florencia Rímolo Figueira",
@@ -9,8 +9,12 @@ export const SITE_OWNER = {
 } as const;
 
 export function getSiteUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || DEFAULT_SITE_URL;
-  return raw.replace(/\/$/, "");
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL?.trim() || CANONICAL_ORIGIN).replace(/\/$/, "");
+  // El apex responde 308 hacia www. Una canónica en el apex no se puede indexar.
+  if (raw === "https://sueloclaro.com" || raw === "http://sueloclaro.com") {
+    return CANONICAL_ORIGIN;
+  }
+  return raw;
 }
 
 export function absoluteUrl(path: string): string {
