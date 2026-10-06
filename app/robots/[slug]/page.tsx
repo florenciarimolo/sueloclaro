@@ -29,6 +29,7 @@ import {
 } from "@/lib/format";
 import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { getProductBySlug, getProductSlugs, getProducts } from "@/lib/queries";
+import { siblingPagesFor } from "@/lib/sibling-pairs";
 import { getSiteUrl } from "@/lib/site";
 
 type Props = PageProps<"/robots/[slug]">;
@@ -79,6 +80,7 @@ export default async function ProductPage({ params }: Props) {
   const [product, catalog] = await Promise.all([getProductBySlug(slug), getProducts()]);
   if (!product) notFound();
   const alternative = alternativeFor(product, catalog);
+  const siblingPages = siblingPagesFor(product.slug, catalog);
 
   const origin = getSiteUrl();
   const guideSlug = relatedGuideForProduct(product);
@@ -257,6 +259,16 @@ export default async function ProductPage({ params }: Props) {
             Más de {product.brands.name}
           </Link>
         ) : null}
+        {siblingPages.map((page) => (
+          <Link
+            key={page.href}
+            href={page.href}
+            className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-white p-4 text-sm font-medium text-stone-800 hover:border-teal-600 hover:text-teal-800"
+          >
+            <CompareIcon className="h-5 w-5 shrink-0 text-teal-700" />
+            {page.title}
+          </Link>
+        ))}
       </nav>
 
       <section className="mt-10 rounded-3xl border border-stone-200 bg-gradient-to-br from-white to-teal-50 p-6 sm:p-8">

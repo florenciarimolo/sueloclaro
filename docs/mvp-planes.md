@@ -4,6 +4,14 @@ Cada bloque es un prompt cerrado. Se ejecuta en orden. El agent no empieza la fa
 
 No crear histórico de precios, alertas, ni enlaces a otras tiendas. No inventar ASIN, precios ni GTIN. Si un dato no está en la ficha abierta ese día, se marca como pendiente y el modelo no se publica.
 
+## Estado
+
+Las fases 1 a 6 están hechas. El sitio público es `https://www.sueloclaro.com`. El apex redirige ahí; canónicas, sitemap y `robots.txt` usan `www`.
+
+La fase 7 sigue cerrada hasta que Amazon conceda la API. Sin precio en la web no se puede salir en búsquedas de «precio».
+
+Lo que falta para aparecer en las búsquedas de modelo y de duda concreta son las fases 8, 9 y 10. Van en ese orden. La 9 y la 10 las hace la propietaria: un agent no entra en Search Console ni publica fuera de la web.
+
 ---
 
 ## Fase 1. Cerrar el catálogo
@@ -116,4 +124,75 @@ Esta fase solo se ejecuta cuando la propietaria confirme por escrito que Creator
 Lee docs/mvp-briefing.md. Muestra el precio actual solo con datos de esa API. Guarda una única fila vigente por producto en price_snapshots, con fetched_at. Refresca cada hora y sustituye esa fila. Si el dato tiene más de 24 horas, no lo pintes: deja el botón "Ver en Amazon" sin cifra. Junto a un precio visible, pon fecha, hora, Europe/Madrid y los dos avisos literales del briefing. Cambia el title de la ficha a "{Modelo}: precio en Amazon | SueloClaro" y la description de la home a la versión que menciona el precio actual.
 
 No guardes serie histórica. No cuentes días fuera de gama. No crees /interno/revision. No envíes email ni Telegram. No guardes imágenes de la API. La clave se queda en el servidor. JSON-LD Product solo en fichas con precio vivo. No abras otros programas de afiliados.
+```
+
+---
+
+## Fase 8. Comparar dos modelos hermanos en una URL indexable
+
+El briefing deja `/comparar?a=&b=` en `noindex` y prohíbe una página escrita por cada pareja del catálogo. Esta fase no levanta esa prohibición. Solo abre una lista cerrada de parejas que un comprador confunde, porque esas búsquedas («X20+ o X20 Max») no tienen URL propia.
+
+```text
+Lee docs/mvp-briefing.md, docs/mvp-planes.md (esta fase) y docs/catalogo-validado.md. El sitio ya está publicado. No reabras las fases 1 a 7.
+
+Crea una URL indexable por cada pareja de esta lista, y por ninguna más. No hagas el producto cartesiano del catálogo. Si uno de los dos slugs no está published, no publiques esa URL: ni página, ni sitemap, ni enlace.
+
+Parejas, en este orden de slugs (el orden es el canónico; la inversa redirige aquí):
+
+1. xiaomi-robot-vacuum-x20-plus y xiaomi-robot-vacuum-x20-max
+2. xiaomi-robot-vacuum-x20-plus y xiaomi-robot-vacuum-x20-pro
+3. xiaomi-robot-vacuum-x20-max y xiaomi-robot-vacuum-x20-pro
+4. dreame-l10s-ultra-gen-2 y dreame-l10s-ultra-gen-3
+5. dreame-l40-ultra-a y dreame-l40-ultra-ae
+6. roborock-qrevo-s5v y roborock-qrevo-s-pro
+7. roborock-qrevo-5ae y roborock-qv-35a
+8. roborock-qrevo-edget y roborock-qrevo-s5v
+
+Ruta: /comparar/{slug-a}-o-{slug-b}. Un H1 con los nombres comerciales y la palabra «o», no «vs» y no «el mejor». Title: «{Nombre A} o {Nombre B} | SueloClaro». Sin la palabra precio. Sin «opiniones»: no hay reseñas de usuarios.
+
+El texto sale de los campos ya guardados (para quién es, para quién no, succión, navegación, mopa, base, mascotas, alfombras, piso pequeño, altura) y de docs/catalogo-validado.md. Di en qué se diferencian y para qué casa encaja cada uno. No inventes pruebas, mediciones ni un ganador. No copies la ficha de Amazon. No muestres euros.
+
+Cada ficha de un modelo de la lista enlaza a su página de pareja. /comparar?a=&b= sigue en noindex. JSON-LD WebPage y BreadcrumbList. Entra en el sitemap. Canonical en https://www.sueloclaro.com.
+
+Comprueba en el navegador una pareja publicada, que la URL inversa redirige, y que una pareja con un slug inventado responde 404.
+```
+
+---
+
+## Fase 9. Pedir la indexación
+
+La hace la propietaria en Google Search Console, con la propiedad de dominio `sueloclaro.com`, después de desplegar la fase 8. Un agent no tiene acceso a esa cuenta.
+
+```text
+No escribas código. Comprueba en el sitio público, ya desplegado, que estas URLs responden 200 y que su canonical es https://www.sueloclaro.com más la ruta:
+
+- /
+- /robots
+- /guias/como-elegir-robot-aspirador-gama-media
+- /guias/robot-aspirador-con-mascotas
+- /guias/robot-aspirador-alfombras
+- /guias/robot-aspirador-piso-pequeno
+- las fichas published que enlacen las guías
+- cada /comparar/{slug-a}-o-{slug-b} que la fase 8 haya publicado
+
+Luego, en Search Console:
+
+1. Sitemaps: envía https://www.sueloclaro.com/sitemap.xml. Si ya estaba enviado, vuelve a enviarlo.
+2. Inspección de URLs: solicita indexación de la home, de /robots, de las cuatro guías y de cada comparativa de la fase 8.
+
+No pidas indexación de /comparar?a=&b=, de los filtros /robots?… ni del aviso legal. Esas URLs no son las que tienen que salir en Google.
+```
+
+---
+
+## Fase 10. Menciones fuera de la web
+
+Sin un enlace desde un sitio que Google ya conoce, el dominio sigue siendo nuevo. No se compran enlaces ni se publican notas de prensa.
+
+```text
+No escribas código y no publiques tú en nombre de la propietaria.
+
+Prepara una lista corta, de tres a cinco sitios en español donde ya se hable de robots aspiradores (un foro, un comparador o una comunidad), y para cada uno anota la URL concreta del hilo o la página donde una mención a SueloClaro sería pertinente. Enlaza una guía o una comparativa de la fase 8, no la home a secas.
+
+La propietaria decide si escribe. El texto, si lo hay, dice qué cubre la página (para quién es cada modelo) y no promete un precio ni una oferta. No uses granjas de enlaces, directorios de pago ni comentarios idénticos en varios sitios.
 ```

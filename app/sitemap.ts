@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { GUIDE_SLUGS } from "@/lib/format";
 import { getBrands, getProductSlugs } from "@/lib/queries";
+import { pairPath, SIBLING_PAIRS } from "@/lib/sibling-pairs";
 import { getSiteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -38,5 +39,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...brandRoutes, ...guideRoutes];
+  const published = new Set(slugs);
+  const siblingRoutes = SIBLING_PAIRS.filter(
+    ([slugA, slugB]) => published.has(slugA) && published.has(slugB),
+  ).map(([slugA, slugB]) => ({
+    url: `${origin}${pairPath(slugA, slugB)}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...brandRoutes, ...guideRoutes, ...siblingRoutes];
 }

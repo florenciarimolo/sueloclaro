@@ -126,7 +126,7 @@ Cada modelo que entre en Supabase lleva: nombre comercial estable, marca, ASIN p
 
 Una ficha contiene, en este orden: para quién es, para quién no, ficha técnica corta, enlace a `/comparar` con ese modelo ya elegido, variantes de color con su ASIN, y el botón a Amazon. El texto es de SueloClaro. No es la descripción del fabricante.
 
-El comparador muestra succión, navegación, mopa, base, mascotas, alfombras, piso pequeño y altura. No escribe un texto nuevo por pareja. Si uno de los dos deja de estar `published`, el selector ya no lo ofrece.
+El comparador muestra succión, navegación, mopa, base, mascotas, alfombras, piso pequeño y altura. No escribe un texto nuevo por pareja. Si uno de los dos deja de estar `published`, el selector ya no lo ofrece. La query `?a=&b=` sigue sin indexarse. La fase 8 de `docs/mvp-planes.md` abre, aparte, una lista cerrada de parejas de modelos hermanos en `/comparar/{slug-a}-o-{slug-b}`. Esa lista no autoriza una página por cada combinación del catálogo.
 
 Las guías responden a una búsqueda, no a “los 10 mejores de 2026”. Ejemplo de título de guía: `Robot aspirador para pelo de mascota entre 250 y 600 euros`.
 
